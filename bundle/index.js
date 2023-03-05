@@ -41,7 +41,7 @@ function add1(x, y) {
     return `${x} ditambah ${y} hasilnya: ${x + y}`;
 }
 const resultadd1 = add1(100, 50);
-function createprocie(procie) {
+function createprocieIntel(procie) {
     console.log(`
     ---
     terimakasih ${procie.brand} ✨✨
@@ -52,13 +52,40 @@ function createprocie(procie) {
     nama base model: ${procie.baseModel} ❤️
     nama model: ${procie.modelName} 👑
     clock speed: ${procie.clockSize} 🔱
+    turbo boost enable? ${procie.turboBoost}
+    total core ${procie.coreTotal}
     `);
 }
-const intelCorei9 = {
+function createprocieAMD(procie) {
+    console.log(`
+    ---
+    terimakasih ${procie.brand} ✨✨
+    ---
+    Anda telah berhasil membuat processor dengan dengan detail 
+    berikut: 👇
+
+    nama base model: ${procie.baseModel} ❤️
+    nama model: ${procie.modelName} 👑
+    clock speed: ${procie.clockSize} 🔱
+    turbo boost enable? ${procie.precisionBoost}
+    total core ${procie.coreTotal}
+    `);
+}
+const Corei9 = {
     brand: "Intel",
     baseModel: "Intel Core i9",
     modelName: "13900KS",
     clockSize: 6.00,
+    coreTotal: 12,
+    turboBoost: true,
+};
+const Ryzen3 = {
+    brand: "AMD",
+    baseModel: "ryzen 3",
+    modelName: "r-5570x",
+    clockSize: 6.00,
+    coreTotal: "dual-core",
+    precisionBoost: true,
 };
 //tampilkan output
 console.log({ namaKu });
@@ -74,4 +101,5 @@ itungan();
 create1();
 add(10, 20);
 console.log(resultadd1);
-createprocie(intelCorei9);
+createprocieIntel(Corei9);
+createprocieAMD(Ryzen3);

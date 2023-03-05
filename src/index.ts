@@ -60,14 +60,27 @@ const resultadd1 = add1(100,50);
 
 
 //interface
+type CoreCount = 2 | 4 |8 |12;
+type CoreName = "DualCore" | "QuadCore"| "OctaCore" | "CoreCore";
+type Core = CoreCount | CoreName;
+
 interface IProsessor{
     brand: string;
     baseModel: string;
     modelName: string;
     clockSize: number;
+    coreTotal: Core;
 }
 
-function createprocie(procie:IProsessor):void{
+interface Intel extends IProsessor{
+    turboBoost:boolean;
+}
+
+interface AMD extends IProsessor{
+    precisionBoost:boolean;
+}
+
+function createprocieIntel(procie:Intel):void{
     console.log(`
     ---
     terimakasih ${procie.brand} ✨✨
@@ -78,13 +91,42 @@ function createprocie(procie:IProsessor):void{
     nama base model: ${procie.baseModel} ❤️
     nama model: ${procie.modelName} 👑
     clock speed: ${procie.clockSize} 🔱
+    turbo boost enable? ${procie.turboBoost}
+    total core ${procie.coreTotal}
     `);
 }
-const intelCorei9 = {
+
+function createprocieAMD(procie:AMD):void{
+    console.log(`
+    ---
+    terimakasih ${procie.brand} ✨✨
+    ---
+    Anda telah berhasil membuat processor dengan dengan detail 
+    berikut: 👇
+
+    nama base model: ${procie.baseModel} ❤️
+    nama model: ${procie.modelName} 👑
+    clock speed: ${procie.clockSize} 🔱
+    turbo boost enable? ${procie.precisionBoost}
+    total core ${procie.coreTotal}
+    `);
+}
+const Corei9: Intel = {
     brand: "Intel",
     baseModel:"Intel Core i9",
     modelName:"13900KS",
     clockSize:6.00,
+    coreTotal: 12,
+    turboBoost:true,
+};
+
+const Ryzen3: AMD = {
+    brand: "AMD",
+    baseModel:"ryzen 3",
+    modelName:"r-5570x",
+    clockSize:6.00,
+    coreTotal: "DualCore",
+    precisionBoost:true,
 };
 
 
@@ -102,4 +144,5 @@ itungan();
 create1();
 add(10,20);
 console.log(resultadd1);
-createprocie(intelCorei9);
+createprocieIntel(Corei9);
+createprocieAMD(Ryzen3);
